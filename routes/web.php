@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArtigoController;
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CategoriaController;
@@ -9,6 +10,9 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/auth/google', 'App\Http\Controllers\Auth\LoginController@redirectToGoogle');
+Route::get('/auth/google/callback', 'App\Http\Controllers\Auth\LoginController@handleGoogleCallback');
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
